@@ -10,21 +10,21 @@ const Body = (spotify) => {
 
 	const playPlaylist = () => {
 		spotify
-			.play({
-				context_uri: `spotify:playlist:37i9dQZEVXcJZyENOWUFo7`,
-			})
-			.then(() => {
-				spotify.getMyCurrentPlayingTrack().then((response) => {
-					dispatch({
-						type: "SET_ITEM",
-						item: response.item,
-					});
-					dispatch({
-						type: "SET_PLAYING",
-						playing: true,
-					});
-				});
-			});
+      .play({
+        context_uri: `spotify:playlist:5xoeDi8mJUDwyRZtiFNZ2X`,
+      })
+      .then(() => {
+        spotify.getMyCurrentPlayingTrack().then((response) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: response.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
 	};
 
 	const playSong = (id) => {
@@ -51,7 +51,7 @@ const Body = (spotify) => {
 			<Header spotify={spotify} />
 
 			<div className="Body-info">
-				<img src={discover_weekly?.images[0].url} alt="" />
+				<img src={discover_weekly?.images[0]?.url} alt="" />
 				<div className="Body-infoText">
 					<strong>PLAYLIST</strong>
 					<h2>Discover Weekly</h2>

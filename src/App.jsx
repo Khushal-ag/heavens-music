@@ -15,7 +15,7 @@ const App = () => {
 		const hash = getTokenFromUrl();
 		window.location.hash = "";
 		let _token = hash.access_token;
-
+		console.log("token : ", _token);
 		if (_token) {
 			spotify.setAccessToken(_token);
 
@@ -24,13 +24,14 @@ const App = () => {
 				token: _token,
 			});
 
-			spotify.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
-				dispatch({
-					type: "SET_DISCOVER_WEEKLY",
-					discover_weekly: response,
-				})
-			);
-
+			spotify
+        .getPlaylist({_token})
+        .then((response) =>
+          dispatch({
+            type: "SET_DISCOVER_WEEKLY",
+            discover_weekly: response,
+          })
+        );
 			spotify.getMyTopArtists().then((response) =>
 				dispatch({
 					type: "SET_TOP_ARTISTS",
@@ -50,12 +51,14 @@ const App = () => {
 				});
 			});
 
-			spotify.getUserPlaylists().then((playlists) => {
-				dispatch({
-					type: "SET_PLAYLISTS",
-					playlists,
-				});
-			});
+			spotify
+        .getUserPlaylists({_token})
+        .then((playlists) => {
+          dispatch({
+            type: "SET_PLAYLISTS",
+            playlists,
+          });
+        });
 		}
 	}, [token, dispatch]);
 

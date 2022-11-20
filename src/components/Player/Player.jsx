@@ -6,7 +6,7 @@ import "./Player.css";
 const Player = ({ spotify }) => {
 	return (
 		<div className="Player">
-			<div className="Player__body">
+			<div className="Player-body">
 				<Sidebar />
 				<Body spotify={spotify} />
 			</div>

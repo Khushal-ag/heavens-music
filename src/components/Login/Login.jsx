@@ -1,5 +1,5 @@
-import { loginUrl } from "../constants/Heavens";
-import Logo from "../assets/images/Logo.png";
+import { loginUrl } from "../../constants/Heavens";
+import Logo from "../../assets/images/Logo.png";
 import "./Login.css";
 
 const Login = () => {

@@ -1,8 +1,8 @@
 import { Favorite, MoreHoriz, PlayCircle } from "@mui/icons-material";
 
-import { useStateValue } from "../state/Provider";
-import Header from "./Header";
-import SongRow from "./SongRow";
+import { useStateValue } from "../../state/Provider";
+import Header from "../Header/Header";
+import SongRow from "../SongRow/SongRow";
 import "./Body.css";
 
 const Body = (spotify) => {

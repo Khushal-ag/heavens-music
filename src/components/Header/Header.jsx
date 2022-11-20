@@ -1,7 +1,7 @@
 import { Search } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 
-import { useStateValue } from "../state/Provider";
+import { useStateValue } from "../../state/Provider";
 import "./Header.css";
 
 const Header = ({ spotify }) => {
@@ -17,7 +17,7 @@ const Header = ({ spotify }) => {
 				/>
 			</div>
 			<div className="Header-right">
-				<Avatar alt={user?.display_name} src={user?.images[0]?.url} />v{" "}
+				<Avatar alt={user?.display_name} src={user?.images[0]?.url} />{" "}
 				<h4>{user?.display_name}</h4>
 			</div>
 		</div>

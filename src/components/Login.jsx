@@ -1,6 +1,6 @@
 import "./Login.css";
 
-import { loginUrl } from "../constants/heavens";
+import { loginUrl } from "../constants/Heavens";
 
 const Login = () => {
 	return (

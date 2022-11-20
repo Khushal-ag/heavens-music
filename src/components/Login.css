@@ -1,3 +1,7 @@
+* {
+	font-family: Cubano;
+}
+
 .Login {
 	display: grid;
 	place-items: center;
@@ -6,27 +10,7 @@
 }
 
 .Login > img {
-	height: 100px;
-}
-
-.Login > a {
-	padding: 20px;
-	border-radius: 99px;
-	font-weight: 800;
-	background-color: #1bd954;
-	text-decoration: none;
-	color: white;
-}
-
-.Login {
-	display: grid;
-	background-color: black;
-	height: 100vh;
-	place-items: center;
-}
-
-.Login > img {
-	height: 200px;
+	height: 500px;
 }
 
 .Login > a {

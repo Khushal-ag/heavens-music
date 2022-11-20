@@ -1,25 +1,23 @@
-import React from "react";
-import "./Body.css";
-import Header from "./Header";
-import { useStateValue } from "../state/Provider";
-// import SongRow from "./SongRow";
-import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Favorite, MoreHoriz, PlayCircle } from "@mui/icons-material";
 
-function Body(spotify) {
+import { useStateValue } from "../state/Provider";
+import Header from "./Header";
+import SongRow from "./SongRow";
+import "./Body.css";
+
+const Body = (spotify) => {
 	const [{ discover_weekly }, dispatch] = useStateValue();
 
-	const playPlaylist = (id) => {
+	const playPlaylist = () => {
 		spotify
 			.play({
 				context_uri: `spotify:playlist:37i9dQZEVXcJZyENOWUFo7`,
 			})
-			.then((res) => {
-				spotify.getMyCurrentPlayingTrack().then((r) => {
+			.then(() => {
+				spotify.getMyCurrentPlayingTrack().then((response) => {
 					dispatch({
 						type: "SET_ITEM",
-						item: r.item,
+						item: response.item,
 					});
 					dispatch({
 						type: "SET_PLAYING",
@@ -34,11 +32,11 @@ function Body(spotify) {
 			.play({
 				uris: [`spotify:track:${id}`],
 			})
-			.then((res) => {
-				spotify.getMyCurrentPlayingTrack().then((r) => {
+			.then(() => {
+				spotify.getMyCurrentPlayingTrack().then((res) => {
 					dispatch({
 						type: "SET_ITEM",
-						item: r.item,
+						item: res.item,
 					});
 					dispatch({
 						type: "SET_PLAYING",
@@ -47,6 +45,7 @@ function Body(spotify) {
 				});
 			});
 	};
+
 	return (
 		<div className="Body">
 			<Header spotify={spotify} />
@@ -62,20 +61,17 @@ function Body(spotify) {
 
 			<div className="Body-songs">
 				<div className="Body-icons">
-					<PlayCircleFilledIcon
-						className="Body-shuffle"
-						onClick={playPlaylist}
-					/>
-					<FavoriteIcon fontSize="large" />
-					<MoreHorizIcon />
+					<PlayCircle className="Body-shuffle" onClick={playPlaylist} />
+					<Favorite fontSize="large" />
+					<MoreHoriz />
 				</div>
 
-				{/* {discover_weekly?.tracks.items.map((item) => (
+				{discover_weekly?.tracks.items.map((item) => (
 					<SongRow playSong={playSong} track={item.track} />
-				))} */}
+				))}
 			</div>
 		</div>
 	);
-}
+};
 
 export default Body;

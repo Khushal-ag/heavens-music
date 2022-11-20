@@ -13,21 +13,21 @@
 	opacity: 0.8;
 }
 
-.SongRow__info {
+.SongRow-info {
 	margin-left: 20px;
 }
 
-.SongRow__info > h1 {
+.SongRow-info > h1 {
 	font-size: 16px;
 }
 
-.SongRow__info > p {
+.SongRow-info > p {
 	font-size: 14px;
 	margin-top: 3px;
 	color: gray;
 }
 
-.SongRow__album {
+.SongRow-album {
 	height: 40px;
 	width: 40px;
 }

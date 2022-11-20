@@ -9,7 +9,7 @@
     align-items: center;
   }
   
-  .Hader-left {
+  .Header-left {
     flex: 0.5;
     display: flex;
     background-color: white;

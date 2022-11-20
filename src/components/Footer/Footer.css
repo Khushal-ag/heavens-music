@@ -4,7 +4,7 @@
     justify-content: space-between;
     bottom: 0;
     height: 65px;
-    width: 97%;
+    width: 100%;
     background-color: #282828;
     padding: 20px;
 }
@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     color: white;
-    max-width: 300px;
+    max-width: 30%;
 }
 
 .Footer-albumLogo{
@@ -43,7 +43,7 @@
 }
 
 .Footer-center{
-    flex: 0.4;
+    flex: 0.5;
     padding: 0 100px;
     color: white;
     display: flex;
@@ -62,4 +62,5 @@
 
 .Footer-right * .MuiSlider-root {
     color: green;
+    width: 90%;
   }

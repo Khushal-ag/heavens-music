@@ -1,8 +1,8 @@
 import { Home, LibraryMusic, Search } from "@mui/icons-material";
 
-import { useStateValue } from "../state/Provider";
+import { useStateValue } from "../../state/Provider";
 import SidebarOption from "./SidebarOption";
-import Logo from "../assets/images/SidebarLogo.png";
+import Logo from "../../assets/images/SidebarLogo.png";
 import "./Sidebar.css";
 
 const Sidebar = () => {

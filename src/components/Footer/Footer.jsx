@@ -11,7 +11,7 @@ import {
 	VolumeDown,
 } from "@mui/icons-material";
 
-import { useStateValue } from "../state/Provider";
+import { useStateValue } from "../../state/Provider";
 import "./Footer.css";
 
 const Footer = ({ spotify }) => {

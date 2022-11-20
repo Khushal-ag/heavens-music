@@ -3,8 +3,8 @@ import SpotifyWebApi from "spotify-web-api-js";
 
 import { useStateValue } from "./state/Provider";
 import { getTokenFromUrl } from "./constants/Heavens";
-import Player from "./components/Player";
-import Login from "./components/Login";
+import Player from "./components/Player/Player";
+import Login from "./components/Login/Login";
 
 const spotify = new SpotifyWebApi();
 

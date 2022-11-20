@@ -11,25 +11,25 @@ import { Grid, Slider } from "@material-ui/core";
 
 function Footer() {
     return (
-        <div className="footer">
-            <div className="footer_left">
+        <div className="Footer">
+            <div className="Footer-left">
                 <img
-                    className="footer_albumLogo"
+                    className="Footer-albumLogo"
                     src="" alt=""
                 />
-                <div className="footer_songInfo">
+                <div className="Footer-songInfo">
                     <h4>Song Name</h4>
                     <p>Usher</p>
                 </div>
             </div>
-            <div className="footer_center">
-                <ShuffleIcon className="footer_green" />
-                <SkipPreviousIcon className="footer_icon" />
-                <PlayCircleOutlineIcon fontSize="large" className="footer_icon" />
-                <SkipNextIcon className="footer_icon" />
-                <RepeatIcon className="footer_green" />
+            <div className="Footer-center">
+                <ShuffleIcon className="Footer-green" />
+                <SkipPreviousIcon className="Footer-icon" />
+                <PlayCircleOutlineIcon fontSize="large" className="Footer-icon" />
+                <SkipNextIcon className="Footer-icon" />
+                <RepeatIcon className="Footer-green" />
             </div>
-            <div className="footer_right">
+            <div className="Footer-right">
                 <Grid container spacing={2}>
                     <Grid item>
                         <PlaylistPlayIcon />

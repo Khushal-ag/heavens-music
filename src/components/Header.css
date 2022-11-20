@@ -1,15 +1,15 @@
-.header {
+.Header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
   }
   
-  .header__right{
+  .Header-right{
     display: flex;
     align-items: center;
   }
   
-  .header__left {
+  .Hader-left {
     flex: 0.5;
     display: flex;
     background-color: white;
@@ -20,12 +20,12 @@
     min-width: 70px;
   }
   
-  .header__left > input {
+  .Header-left > input {
     border: none;
     width: 100%;
   }
   
-  .header__right > h4 {
+  .Header-right > h4 {
     margin-left: 10px;
   }
   

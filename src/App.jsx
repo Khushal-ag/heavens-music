@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import { useStateValue } from "./StateProvider";
-import Player from "/components/Player";
-import { getTokenFromResponse } from "/constants/heavens.js";
-import "./App.css";
-import Login from "/components/Login.jsx";
+
+import { useStateValue } from "./state/Provider";
+import Player from "./components/Player";
+import { getTokenFromUrl } from "./constants/Heavens";
+import Login from "./components/Login";
 
 const s = new SpotifyWebApi();
 
-function App() {
+const App = () => {
 	const [{ token }, dispatch] = useStateValue();
 
 	useEffect(() => {
 		// Set token
-		const hash = getTokenFromResponse();
+		const hash = getTokenFromUrl();
 		window.location.hash = "";
 		let _token = hash.access_token;
 
@@ -66,6 +66,6 @@ function App() {
 			{token && <Player spotify={s} />}
 		</div>
 	);
-}
+};
 
 export default App;

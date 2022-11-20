@@ -1,31 +1,34 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Grid, Slider } from "@mui/material";
+import {
+	PauseCircleOutline,
+	PlayCircle,
+	PlaylistPlay,
+	Repeat,
+	Shuffle,
+	SkipNext,
+	SkipPrevious,
+	VolumeDown,
+} from "@mui/icons-material";
+
 import { useStateValue } from "../state/Provider";
 import "./Footer.css";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import ShuffleIcon from "@mui/icons-material/Shuffle";
-import RepeatIcon from "@mui/icons-material/Repeat";
-import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
-import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
-import { Grid, Slider } from "@mui/material";
 
-function Footer({ spotify }) {
+const Footer = ({ spotify }) => {
 	const [{ item, playing }, dispatch] = useStateValue();
 
 	useEffect(() => {
-		spotify.getMyCurrentPlaybackState().then((r) => {
-			console.log(r);
+		spotify.getMyCurrentPlaybackState().then((response) => {
+			console.log(response);
 
 			dispatch({
 				type: "SET_PLAYING",
-				playing: r.is_playing,
+				playing: response.is_playing,
 			});
 
 			dispatch({
 				type: "SET_ITEM",
-				item: r.item,
+				item: response.item,
 			});
 		});
 	}, [spotify, dispatch]);
@@ -48,10 +51,10 @@ function Footer({ spotify }) {
 
 	const skipNext = () => {
 		spotify.skipToNext();
-		spotify.getMyCurrentPlayingTrack().then((r) => {
+		spotify.getMyCurrentPlayingTrack().then((response) => {
 			dispatch({
 				type: "SET_ITEM",
-				item: r.item,
+				item: response.item,
 			});
 			dispatch({
 				type: "SET_PLAYING",
@@ -62,10 +65,10 @@ function Footer({ spotify }) {
 
 	const skipPrevious = () => {
 		spotify.skipToPrevious();
-		spotify.getMyCurrentPlayingTrack().then((r) => {
+		spotify.getMyCurrentPlayingTrack().then((response) => {
 			dispatch({
 				type: "SET_ITEM",
-				item: r.item,
+				item: response.item,
 			});
 			dispatch({
 				type: "SET_PLAYING",
@@ -73,6 +76,7 @@ function Footer({ spotify }) {
 			});
 		});
 	};
+
 	return (
 		<div className="Footer">
 			<div className="Footer-left">
@@ -94,31 +98,31 @@ function Footer({ spotify }) {
 				)}
 			</div>
 			<div className="Footer-center">
-				<ShuffleIcon className="Footer-green" />
-				<SkipPreviousIcon onClick={skipNext} className="Footer-icon" />
+				<Shuffle className="Footer-green" />
+				<SkipPrevious onClick={skipNext} className="Footer-icon" />
 				{playing ? (
-					<PauseCircleOutlineIcon
+					<PauseCircleOutline
 						onClick={handlePlayPause}
 						fontSize="large"
 						className="Footer-icon"
 					/>
 				) : (
-					<PlayCircleOutlineIcon
+					<PlayCircle
 						onClick={handlePlayPause}
 						fontSize="large"
 						className="Footer-icon"
 					/>
 				)}
-				<SkipNextIcon onClick={skipPrevious} className="Footer-icon" />
-				<RepeatIcon className="Footer-green" />
+				<SkipNext onClick={skipPrevious} className="Footer-icon" />
+				<Repeat className="Footer-green" />
 			</div>
 			<div className="Footer-right">
 				<Grid container spacing={2}>
 					<Grid item>
-						<PlaylistPlayIcon />
+						<PlaylistPlay />
 					</Grid>
 					<Grid item>
-						<VolumeDownIcon />
+						<VolumeDown />
 					</Grid>
 					<Grid item xs>
 						<Slider aria-labelledby="continuous-slider" />
@@ -127,6 +131,6 @@ function Footer({ spotify }) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Footer;

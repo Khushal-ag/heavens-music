@@ -1,22 +1,22 @@
 .Sidebar {
-    height: 100vh;
-     flex:0.2;
-     color: white;
-     padding: 0px 10px;
-     min-width: 230px;
-     height: 100vh;
-     background-color: #040404;
+	height: 100vh;
+	flex: 0.2;
+	color: white;
+	padding: 0px 10px;
+	min-width: 230px;
+	height: 100vh;
+	background-color: #040404;
 }
 
-.Sidebar-logo{
-    margin-right:auto;
-    object-fit: contain;
-    height: 70px;
-    padding: 10px;
+.Sidebar-logo {
+	margin-right: auto;
+	object-fit: contain;
+	height: 70px;
+	padding: 10px 0;
 }
 
 .Sidebar-title {
-  margin-left: 10px;
-  padding: 5px;
-  font-size: 12px;
+	margin-left: 10px;
+	padding: 5px;
+	font-size: 12px;
 }

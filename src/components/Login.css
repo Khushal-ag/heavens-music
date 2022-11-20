@@ -1,15 +1,15 @@
-.login {
+.Login {
 	display: grid;
 	place-items: center;
 	height: 100vh;
 	background-color: black;
 }
 
-.login > img {
+.Login > img {
 	height: 100px;
 }
 
-.login > a {
+.Login > a {
 	padding: 20px;
 	border-radius: 99px;
 	font-weight: 800;
@@ -18,18 +18,18 @@
 	color: white;
 }
 
-.login {
+.Login {
 	display: grid;
 	background-color: black;
 	height: 100vh;
 	place-items: center;
 }
 
-.login > img {
+.Login > img {
 	height: 200px;
 }
 
-.login > a {
+.Login > a {
 	color: black;
 	text-decoration: none;
 	padding: 20px;

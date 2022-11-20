@@ -1,29 +1,71 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
+import { useStateValue } from "./StateProvider";
+import Player from "/components/Player";
+import { getTokenFromResponse } from "/constants/heavens.js";
+import "./App.css";
+import Login from "/components/Login.jsx";
 
-import Login from "./components/Login";
-import Player from "./components/Player";
-import { getTokenFromUrl } from "./constants/Heavens";
+const s = new SpotifyWebApi();
 
-const spotify = new SpotifyWebApi();
-
-const App = () => {
-	const [token, setToken] = useState(null);
+function App() {
+	const [{ token }, dispatch] = useStateValue();
 
 	useEffect(() => {
-		const hash = getTokenFromUrl();
+		// Set token
+		const hash = getTokenFromResponse();
 		window.location.hash = "";
-		const _token = hash.access_token;
-		console.log("Login Sucessfully...");
+		let _token = hash.access_token;
 
 		if (_token) {
-			setToken(_token);
-			spotify.setAccessToken(_token);
-			spotify.getMe().then((user) => console.log(user));
-		}
-	}, []);
+			s.setAccessToken(_token);
 
-	return <div className="App">{token ? <Player /> : <Login />}</div>;
-};
+			dispatch({
+				type: "SET_TOKEN",
+				token: _token,
+			});
+
+			s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
+				dispatch({
+					type: "SET_DISCOVER_WEEKLY",
+					discover_weekly: response,
+				})
+			);
+
+			s.getMyTopArtists().then((response) =>
+				dispatch({
+					type: "SET_TOP_ARTISTS",
+					top_artists: response,
+				})
+			);
+
+			dispatch({
+				type: "SET_SPOTIFY",
+				spotify: s,
+			});
+
+			s.getMe().then((user) => {
+				dispatch({
+					type: "SET_USER",
+					user,
+				});
+			});
+
+			s.getUserPlaylists().then((playlists) => {
+				dispatch({
+					type: "SET_PLAYLISTS",
+					playlists,
+				});
+			});
+		}
+	}, [token, dispatch]);
+
+	return (
+		<div className="App">
+			{!token && <Login />}
+			{token && <Player spotify={s} />}
+		</div>
+	);
+}
 
 export default App;
